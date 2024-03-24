@@ -6,4 +6,4 @@ const dbconnect = () => {
         console.log("mongoose connected");
     }).catch(err => console.log("error connecting db ", err));
 }
-export default dbconnect;
+export default dbconnect; 

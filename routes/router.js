@@ -25,7 +25,7 @@ router.patch("/candidates/updatecandidate/:id",jwtAuth,updatecandidate); //updat
 router.patch("/users/updateuser/:id",jwtAuth,updateuser); //update info of a user
 router.delete("/candidates/deletecandidate/:id",jwtAuth,deletecandidate); //delete info of a candidate
 router.delete("/users/deleteuser/:id",jwtAuth,deleteuser); //delete info of a user
-router.put("/vote/:id",jwtAuth,vote); //vote a candidate
+router.post("/vote/:id",jwtAuth,vote); //vote a candidate
 
 router.get("/results",results); //get real time results
 

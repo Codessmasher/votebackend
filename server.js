@@ -4,7 +4,7 @@ import router from "./routes/router.js";
 
 const app=express();
  
-// middlewares
+// middlewares  
 app.use(express.json());  
 app.use("/api",router);  
   
