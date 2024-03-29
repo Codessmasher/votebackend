@@ -7,6 +7,7 @@ import addcandidate from "../controllers/candidates/addcandidate.js";
 import candidates from "../controllers/candidates.js";  
 import updatecandidate from "../controllers/candidates/updatecandidate.js";  
 import updateuser from "../controllers/users/updateuser.js";  
+import profile from "../controllers/users/profile.js";  
 import deleteuser from "../controllers/users/deleteuser.js";  
 import deletecandidate from "../controllers/candidates/deletecandidate.js";  
 import vote from "../controllers/vote.js";  
@@ -21,6 +22,7 @@ router.post("/candidates/addcandidate",jwtAuth,addcandidate); //create a new can
 
 router.get("/candidates",candidates); //get list of candidates
 router.get("/candidates/:id",candidates); //get info of a candidate
+router.get("/users/profile",jwtAuth,profile); //update info of a candidate
 router.patch("/candidates/updatecandidate/:id",jwtAuth,updatecandidate); //update info of a candidate
 router.patch("/users/updateuser/:id",jwtAuth,updateuser); //update info of a user
 router.delete("/candidates/deletecandidate/:id",jwtAuth,deletecandidate); //delete info of a candidate

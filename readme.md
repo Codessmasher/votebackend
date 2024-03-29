@@ -25,13 +25,14 @@ This repository contains the backend API for a voting app. It includes endpoints
 
 - `/users/signup` (POST): Signup for users and admin.
 - `/users/signin` (POST): Signin for users and admin to receive a JWT token.
-- `/users/updateuser/:userid` (PATCH)✅(users & admin update)
-- `/users/deleteuser/:userid` (DELETE)✅(users & admin delete)
+- `/users/updateuser/:userid` (PATCH)(users & admin update)
+- `/users/profile/` (GET)(login required)
+- `/users/deleteuser/:userid` (DELETE)(users & admin delete)
 
 ### Admin
 
 - `/candidates/addcandidate` (POST): Create new candidates. (Admin Authorization required)
-- `/candidate/:candidateid` (PUT): Update a candidate information.
+- `/candidate/:candidateid` (PATCH): Update a candidate information.
 - `/candidate/:candidateid` (DELETE): Delete a candidate.
 
 ### Candidates
