@@ -50,20 +50,7 @@ userSchema.pre("save", function(next){
         return next(error);
     }
 })
- 
-// Add a pre middleware for findByIdAndUpdate 
-userSchema.pre("findOneAndUpdate", async function (next) {
-    const update = this.getUpdate() // {password: "..."}
-    if (update.password) {
-      const passwordHash = await bcrypt.hash(update.password, 10);
-      this.setUpdate({ $set: { 
-         password: passwordHash 
-        } 
-      });
-    }
-    next()
-  });
-
+  
 
 
 userSchema.methods.comparePassword = function(pass){
