@@ -40,7 +40,7 @@ const userSchema = mongoose.Schema({
 
 userSchema.pre("save", function(next){
     const user=this;
-    // if (!user.isModified("password")) return next();
+    if (!user.isModified("password")) return next();
     try {
         const hashedpassword = bcrypt.hashSync(user.password, 10);
         user.password = hashedpassword;
@@ -51,6 +51,17 @@ userSchema.pre("save", function(next){
     }
 })
  
+// Add a pre middleware for findByIdAndUpdate 
+userSchema.pre("findByIdAndUpdate", function(next) {
+    const update = this._update;
+    if (update.password) {
+        update.password = bcrypt.hashSync(update.password, 10);
+    }
+    next();
+});
+
+
+
 userSchema.methods.comparePassword = function(pass){
     try {
         const isMatched = bcrypt.compareSync(pass, this.password);
