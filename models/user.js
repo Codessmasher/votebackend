@@ -53,11 +53,16 @@ userSchema.pre("save", function(next){
  
 // Add a pre middleware for findByIdAndUpdate 
 userSchema.pre("findByIdAndUpdate", function(next) {
-    const update = this._update;
-    if (update.password) {
-        update.password = bcrypt.hashSync(update.password, 10);
+    const user=this;
+    if (!user.isModified("password")) return next();
+    try {
+        const hashedpassword = bcrypt.hashSync(user.password, 10);
+        user.password = hashedpassword;
+        next();
+    } catch (error) {
+        console.log(error);
+        return next(error);
     }
-    next();
 });
 
 
